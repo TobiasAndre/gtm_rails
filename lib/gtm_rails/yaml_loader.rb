@@ -8,7 +8,7 @@ module GtmRails
       config = if yaml && yaml.exist?
         require 'yaml'
         require 'erb'
-        YAML.load(ERB.new(yaml.read).result) || {}
+        YAML.load(ERB.new(yaml.read).result, aliases: true) || {}
       else
         raise 'Could not load database configuration. No such file - config/google_tag_manager.yml'
       end
